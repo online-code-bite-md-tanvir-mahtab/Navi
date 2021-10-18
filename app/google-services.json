@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "940415320692",
+    "project_id": "taskcalander",
+    "storage_bucket": "taskcalander.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940415320692:android:5b7f0bc78a84e078324721",
+        "android_client_info": {
+          "package_name": "com.tanvircodder.taskclander"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "940415320692-5ttu0o4lem3t80gh29aue81dfb5slu06.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tanvircodder.taskclander",
+            "certificate_hash": "f457b299993067b58a4fa81fdc3b5be511991f03"
+          }
+        },
+        {
+          "client_id": "940415320692-u8btn2d240o48npb7gn7m2ceb51s0fdl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACNgG_qfZ_D4dplGewb693Rs5qTw1jmKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940415320692-u8btn2d240o48npb7gn7m2ceb51s0fdl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
