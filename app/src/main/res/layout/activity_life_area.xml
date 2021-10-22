@@ -1,9 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LifeArea">
+    tools:context=".LifeArea"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please set your life areas and estimated time invested"
+        android:textSize="25dp"/>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Area"
+            android:gravity="center_horizontal" />
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Weekly hours"
+            android:layout_marginLeft="200dp"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+            <EditText
+                android:id="@+id/career_business"
+                android:hint="Career/Business"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/c_b_hour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight = "1"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+            <EditText
+                android:id="@+id/family"
+                android:hint="Family"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/family_hour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight = "1"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+            <EditText
+                android:id="@+id/fun"
+                android:hint="Fun"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/fun_hour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight = "1"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+            <EditText
+                android:id="@+id/fitness"
+                android:hint="Fitness"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/fitness_hour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight = "1"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+            <EditText
+                android:id="@+id/add"
+                android:hint="Add.."
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp" />
+            <EditText
+                android:id="@+id/add_hour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight = "1"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/button_life_continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:text="Continue"
+        android:onClick="lifeClick"/>
+
+
+
+
+
+</LinearLayout>
+
