@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskClander">
-        <activity android:name=".LifeArea"></activity>
+        <activity android:name=".SleepHabits"></activity>
+        <activity android:name=".LifeArea" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
