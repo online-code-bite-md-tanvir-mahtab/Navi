@@ -19,7 +19,18 @@ public class SleepHabits extends AppCompatActivity {
 
     public Time defference(Time start, Time stop){
         Time diff = new Time(0,0,0);
+        if (start.mSecond>stop.mSecond){
+            --stop.mSecond;
+            stop.mMiniue +=60;
+        }
+        diff.mSecond = stop.mSecond- start.mSecond;
 
+        if (start.mMiniue> stop.mMiniue){
+            --stop.mMiniue;
+            stop.
+        }
+        diff.mMiniue = start.mMiniue - stop.mMiniue;
+        diff.mHour = start.mHour - stop.mHour;
 
     }
 }
