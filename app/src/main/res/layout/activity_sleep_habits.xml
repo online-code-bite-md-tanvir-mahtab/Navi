@@ -55,6 +55,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <EditText
+            android:id="@+id/start_hour"
             android:hint="24:00"
             android:textColorHint="@color/white"
             android:layout_width="0dp"
@@ -64,6 +65,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"/>
         <EditText
+            android:id="@+id/end_hour"
             android:hint="24:00"
             android:textColorHint="@color/white"
             android:layout_width="0dp"
@@ -87,6 +89,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"/>
         <TextView
+            android:id="@+id/calculated_hour"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -124,6 +127,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
         <EditText
+            android:id="@+id/pree_time"
             android:hint="24:00"
             android:textColorHint="@color/white"
             android:layout_width="0dp"
@@ -133,6 +137,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"/>
         <EditText
+            android:id="@+id/post_time"
             android:hint="24:00"
             android:textColorHint="@color/white"
             android:layout_width="0dp"

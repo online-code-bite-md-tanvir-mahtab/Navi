@@ -2,14 +2,25 @@ package com.tanvircodder.taskclander.model;
 
 public class Time {
 
-    public int mHour;
-    public int mMiniue;
-    public int mSecond;
+    private String mStartHour;
+    private String mStopHour;
+    private long mTotal;
 
-    public Time(int mHour, int mMiniue, int mSecond) {
-        this.mHour = mHour;
-        this.mMiniue = mMiniue;
-        this.mSecond = mSecond;
+    public Time(String mStartHour, String mStopHour,long mTotal) {
+        this.mStartHour = mStartHour;
+        this.mStopHour = mStopHour;
+        this.mTotal = mTotal;
     }
 
+    public String getmStartHour() {
+        return mStartHour;
+    }
+
+    public String getmStopHour() {
+        return mStopHour;
+    }
+
+    public long getmTotal() {
+        return mTotal;
+    }
 }
