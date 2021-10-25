@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference(User.class.getSimpleName());
         myRef.setValue(user);
-        Toast.makeText(MainActivity.this,"You have clicked the continue buton", Toast.LENGTH_LONG)
-                .show();
+        Intent intent = new Intent(MainActivity.this,SleepHabits.class);
+        startActivity(intent);
     }
 }
