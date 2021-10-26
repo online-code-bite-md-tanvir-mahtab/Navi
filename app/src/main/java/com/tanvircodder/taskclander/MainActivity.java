@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         f_name = (EditText) findViewById(R.id.f_name_view);
         familly_name = (EditText) findViewById(R.id.family_view_name);
         gender_picker = (EditText) findViewById(R.id.gender_picker);
-        email_view = (EditText) findViewById(R.id.email_edit_view);
+        email_view = (EditText) findViewById(R.id.email_body_view);
         birth_view = (EditText) findViewById(R.id.birth_view_name);
         country_view = (EditText) findViewById(R.id.country_view);
         String first_name = f_name.getText().toString();
