@@ -7,17 +7,9 @@
     tools:context=".ShowEventActivity"
     android:orientation="vertical">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text=""
-        android:id="@+id/name_event_view"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text=""
-        android:id="@+id/place_of_the_event"/>
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerview"/>
 
 </LinearLayout>

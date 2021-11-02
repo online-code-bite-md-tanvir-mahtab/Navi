@@ -3,6 +3,7 @@ package com.tanvircodder.taskclander;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,10 +41,12 @@ public class AddActivity extends AppCompatActivity {
                 String event_name = mNameOfEvent.getText().toString();
                 String event_place = mNameOfLocation.getText().toString();
                 Event event = new Event(event_name,event_place);
-                mDatabase.child(AddActivity.class.getSimpleName()).child(event_name)
+                mDatabase.child(Event.class.getSimpleName()).child(event_name)
                         .setValue(event);
                 Toast.makeText(AddActivity.this,"The data has been saved",Toast.LENGTH_LONG)
                         .show();
+                Intent intent = new Intent(AddActivity.this,ShowEventActivity.class);
+                startActivity(intent);
             }
         });
 

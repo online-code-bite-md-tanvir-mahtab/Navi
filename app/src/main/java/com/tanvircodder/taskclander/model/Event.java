@@ -1,9 +1,16 @@
 package com.tanvircodder.taskclander.model;
 
 public class Event {
-    private String mName;
-    private String mLocation;
+    String mName;
+    String mLocation;
 
+    public Event() {
+    }
+
+    public Event(String mName, String mLocation) {
+        this.mName = mName;
+        this.mLocation = mLocation;
+    }
     public String getmName() {
         return mName;
     }
@@ -12,8 +19,5 @@ public class Event {
         return mLocation;
     }
 
-    public Event(String mName, String mLocation) {
-        this.mName = mName;
-        this.mLocation = mLocation;
-    }
+
 }

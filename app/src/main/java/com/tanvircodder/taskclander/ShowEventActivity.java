@@ -1,22 +1,74 @@
 package com.tanvircodder.taskclander;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.tanvircodder.taskclander.adapter.EventAdapter;
+import com.tanvircodder.taskclander.model.Event;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ShowEventActivity extends AppCompatActivity {
+    private static final String LOG_TAG = ShowEventActivity.class.getSimpleName();
     private DatabaseReference mDatabase;
-    private TextView mEventName, mPlaceName;
+    private RecyclerView mRecyclerView;
+    private EventAdapter mAdapter;
+    private List<Event> mData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_event);
+        mRecyclerView = (RecyclerView)findViewById(R.id.recyclerview);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mData = new ArrayList<>();
+        mAdapter = new EventAdapter(this);
 
-        mEventName = (TextView) findViewById(R.id.name_event_view);
-        mPlaceName = (TextView) findViewById(R.id.place_of_the_event);
+
+
+
+//        now i am going to access the data base with the helpof the reference
+//        mDatabase = FirebaseDatabase.getInstance().getReference()
+//                .child(Event.class.getSimpleName());
+        mDatabase = FirebaseDatabase.getInstance().getReference(Event.class.getSimpleName());
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                now i am goig to iterate with foreach
+                System.out.println(snapshot.getKey());
+                Log.e(LOG_TAG,"The message"+snapshot.getChildrenCount());
+                for (DataSnapshot data :
+                        snapshot.getChildren()) {
+                    Event event = data.getValue(Event.class);
+                    mData.add(event);
+                    System.out.println(event.getmName());
+                    System.out.println(data.getValue());
+                }
+                System.out.println(mData.size());
+                mRecyclerView.setAdapter(mAdapter);
+                mAdapter.swapData(mData);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 }
