@@ -25,4 +25,20 @@ public class User {
     public String getmFamillyName() {
         return mFamillyName;
     }
+
+    public String getmEmail() {
+        return mEmail;
+    }
+
+    public String getmBirth() {
+        return mBirth;
+    }
+
+    public String getmCountry() {
+        return mCountry;
+    }
+
+    public String getmGender() {
+        return mGender;
+    }
 }

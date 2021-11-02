@@ -28,5 +28,9 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="welcome_page_text">Welcome to NAVI, the firest app that really manage all your stuff in one place
+Mettings. event and to-do\'s are all integrated in NAVI
+Further more , NAVI manages your time autonomously saving you tons of time on planing
+Letting NAVE planing for you requires to konw you and your perfrences a little better</string>
 
 </resources>

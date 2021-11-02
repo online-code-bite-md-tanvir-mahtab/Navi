@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 //    creating the instance of the firbase data base and the datarabase reference
-    FirebaseDatabase database ;
-    DatabaseReference myRef;
+    DatabaseReference mDatabase ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void myClick(View view){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         f_name = (EditText) findViewById(R.id.f_name_view);
         familly_name = (EditText) findViewById(R.id.family_view_name);
         gender_picker = (EditText) findViewById(R.id.gender_picker);
@@ -72,11 +72,11 @@ public class MainActivity extends AppCompatActivity {
 
         User user = new User(first_name,familly,email,birth,country,gender);
 
+        mDatabase.child(User.class.getSimpleName()).child(familly)
+                .setValue(user);
 //        writing the message to the database..//
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(User.class.getSimpleName());
-        myRef.setValue(user);
-        Intent intent = new Intent(MainActivity.this,SleepHabits.class);
-        startActivity(intent);
+
+//        Intent intent = new Intent(MainActivity.this,SleepHabits.class);
+//        startActivity(intent);
     }
 }

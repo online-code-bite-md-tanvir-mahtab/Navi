@@ -64,6 +64,37 @@
                 android:layout_height="wrap_content"
                 android:text="Specific time eent"/>
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textColor="@color/white"
+            android:textSize="15dp"/>
+        <EditText
+            android:backgroundTint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/event_category_view"
+            android:hint="Event Name"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dead line"
+            android:textColor="@color/white"
+            android:textSize="15dp"/>
+        <EditText
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dead_event_view"
+            android:hint="Where "
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+
     </LinearLayout>
 
 

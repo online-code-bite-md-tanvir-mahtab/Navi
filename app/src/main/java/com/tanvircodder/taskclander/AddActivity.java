@@ -22,9 +22,10 @@ public class AddActivity extends AppCompatActivity {
 
     private EditText mNameOfEvent;
     private EditText mNameOfLocation;
+    private EditText mCategoryEvent;
+    private EditText mDadeLine;
     private Button mButton;
     private DatabaseReference mDatabase;
-    private FirebaseDatabase mFDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class AddActivity extends AppCompatActivity {
 
         mNameOfEvent =(EditText) findViewById(R.id.event_name);
         mNameOfLocation = (EditText) findViewById(R.id.where);
+        mCategoryEvent = (EditText) findViewById(R.id.event_category_view);
+        mDadeLine = (EditText) findViewById(R.id.dead_event_view);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mButton  = (Button) findViewById(R.id.go_view);
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +43,9 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String event_name = mNameOfEvent.getText().toString();
                 String event_place = mNameOfLocation.getText().toString();
-                Event event = new Event(event_name,event_place);
+                String event_category = mCategoryEvent.getText().toString();
+                String event_deadline = mDadeLine.getText().toString();
+                Event event = new Event(event_name,event_place,event_category,event_deadline);
                 mDatabase.child(Event.class.getSimpleName()).child(event_name)
                         .setValue(event);
                 Toast.makeText(AddActivity.this,"The data has been saved",Toast.LENGTH_LONG)
