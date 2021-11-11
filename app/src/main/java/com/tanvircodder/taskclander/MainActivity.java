@@ -70,17 +70,16 @@ public class MainActivity extends AppCompatActivity {
         String birth = birth_view.getText().toString();
         String country = country_view.getText().toString();
 
-        User user = new User(first_name,familly,email,birth,country,gender);
 
-        mDatabase.child(User.class.getSimpleName()).child(familly)
-                .setValue(user);
 //        writing the message to the database..//
-        if (first_name == null && familly==null && gender==null){
+        if (first_name != null && familly!=null && gender!=null){
+            User user = new User(first_name,familly,email,birth,country,gender);
+
+            mDatabase.child(User.class.getSimpleName()).child(familly)
+                    .setValue(user);
             Intent intent = new Intent(MainActivity.this,SleepHabits.class);
             startActivity(intent);
         }else {
-            Intent intent = new Intent(MainActivity.this,SleepHabits.class);
-            startActivity(intent);
         }
 
 

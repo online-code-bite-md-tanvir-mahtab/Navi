@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 .show();
                                     }
                                 }else {
-                                    Intent intent = new Intent(LoginActivity.this,WalcomePage.class);
+                                    Intent intent = new Intent(LoginActivity.this,ShowEventActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }

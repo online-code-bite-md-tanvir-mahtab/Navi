@@ -65,6 +65,15 @@
                 android:text="Specific time event"
                 android:textSize="15dp"/>
         </LinearLayout>
+        <com.rtugeek.android.colorseekbar.ColorSeekBar
+
+            android:id="@+id/colorSlider"
+
+            android:layout_width="match_parent"
+
+            app:colorSeeds="@array/material_colors"
+
+            android:layout_height="wrap_content" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
