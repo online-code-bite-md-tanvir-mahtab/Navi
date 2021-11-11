@@ -1,10 +1,13 @@
 package com.tanvircodder.taskclander;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
@@ -21,6 +24,7 @@ import com.tanvircodder.taskclander.model.Event;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class ShowEventActivity extends AppCompatActivity {
@@ -29,14 +33,24 @@ public class ShowEventActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private EventAdapter mAdapter;
     private List<Event> mData;
+    private TextView mDateTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_event);
+        setTitle("Day View");
+        mDateTime = (TextView) findViewById(R.id.day_viewa_current_time);
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mData = new ArrayList<>();
         mAdapter = new EventAdapter(this);
+        SimpleDateFormat sdf = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+            String currentDateandTime = sdf.format(new Date());
+            mDateTime.setText(currentDateandTime);
+        }
+
 
 
 

@@ -5,9 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShowEventActivity"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:background="@color/black">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="30dp"
+        android:id="@+id/day_viewa_current_time"/>
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerview"/>

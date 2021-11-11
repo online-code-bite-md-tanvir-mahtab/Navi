@@ -3,21 +3,28 @@ package com.tanvircodder.taskclander;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tanvircodder.taskclander.model.Time;
 import com.tanvircodder.taskclander.model.Time.*;
 
+import org.w3c.dom.Text;
+
 import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 public class SleepHabits extends AppCompatActivity {
 
@@ -25,6 +32,8 @@ public class SleepHabits extends AppCompatActivity {
     private EditText editStartHour,editEndHour;
     private TextView mHourVieww;
     private EditText mPreSleep,mPostSleep;
+    private int mHour,mMinute;
+    private int mHour2,mMinute2;
 
     private FirebaseDatabase database;
     private DatabaseReference myRef;
@@ -33,32 +42,95 @@ public class SleepHabits extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep_habits);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public  void calculate(View view){
         editStartHour = (EditText) findViewById(R.id.start_hour);
         editEndHour = (EditText) findViewById(R.id.end_hour);
 
+        editStartHour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                defining the object of the Calendar class.
+                final Calendar calendar = Calendar.getInstance();
+
+//                geting the day hour from thecalender and store it in the first hour..
+                mHour = calendar.get(Calendar.HOUR_OF_DAY);
+//                getting the minute of the day and store them in the
+                mMinute = calendar.get(Calendar.MINUTE);
+
+//                for he timepicker layout
+                TimePickerDialog timePickerDialog = new TimePickerDialog(SleepHabits.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//                        now i am goig ot se the
+                        editStartHour.setText(hourOfDay + ":" + minute);
+                    }
+                },mHour,mMinute,false);
+                timePickerDialog.show();
+            }
+        });
+        editEndHour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar calendar = Calendar.getInstance();
+                mHour2 = calendar.get(Calendar.HOUR_OF_DAY);
+                mMinute2 = calendar.get(Calendar.MINUTE);
+                TimePickerDialog timePickerDialog = new TimePickerDialog(SleepHabits.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        editEndHour.setText(hourOfDay + ":" + minute);
+                    }
+                },mHour2,mMinute2,false);
+                timePickerDialog.show();
+            }
+        });
+    }
+    public void calculate(View view){
+
+
         mPreSleep = (EditText) findViewById(R.id.pree_time);
         mPostSleep = (EditText) findViewById(R.id.post_time);
-
-        String start = editStartHour.getText().toString();
-        String stop  = editEndHour.getText().toString();
-        System.out.println(start +"\n" + stop);
+        editStartHour = (EditText) findViewById(R.id.start_hour);
+        editEndHour = (EditText) findViewById(R.id.end_hour);
         mHourVieww = (TextView) findViewById(R.id.calculated_hour);
-        long total = 0;
-        LocalTime start_hour = LocalTime.parse(start) ;
-        LocalTime stop_hour = LocalTime.parse( stop) ;
+        String[] firstHour = editStartHour.getText().toString().split(":");
+        String[] secondHour = editEndHour.getText().toString().split(":");
+        double f_hour = convertToFirstHour(firstHour);
+        double s_hour = convertToSecondHour(secondHour);
+        String totalHour = Integer.toString((int) ((f_hour-s_hour)/3660));
+        mHourVieww.setText(totalHour);
+        if (editStartHour.getText()!=null && editEndHour.getText() != null && mPreSleep.getText() != null && mPostSleep.getText() != null){
+            Intent intent = new Intent(SleepHabits.this,LifeArea.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this,"Please fill up the box",Toast.LENGTH_LONG)
+                    .show();
+        }
 
-        Duration duration = Duration.between(start_hour,stop_hour);
-        total = duration.getSeconds()/3600;
-        Time time = new Time(start,stop,total);
-        mHourVieww.setText(Long.toString(total));
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(Time.class.getSimpleName());
-        myRef.setValue(time);
 
+    }
+    private double convertToFirstHour(String[] firstHour) {
+        double  hour =0;
+        double  minute =0 ;
+        if (firstHour.length > 0){
+            hour = Integer.parseInt(firstHour[0]);
+            minute = Integer.parseInt(firstHour[1]);
+            return (hour*3600)+(minute*60);
+        }else{
+
+        }
+        return (hour*3600)+(minute*60);
+
+    }
+    private double convertToSecondHour(String[] firstHour) {
+        double hour = 0;
+        double minute = 0;
+        if (firstHour.length > 0){
+            hour = Integer.parseInt(firstHour[0]);
+            minute = Integer.parseInt(firstHour[1]);
+            System.out.println(hour + ":" + minute);
+        }else{
+
+        }
+        return (hour*3600)+(minute*60);
     }
 }
 

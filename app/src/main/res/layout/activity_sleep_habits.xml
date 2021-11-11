@@ -38,14 +38,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="BeadTime"
+            android:text="BedTime"
             android:textColor="@color/white"
             android:textSize="20dp"/>
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="BeadTime"
+            android:text="Wake up"
             android:textColor="@color/white"
             android:textSize="20dp"/>
     </LinearLayout>
@@ -56,7 +56,7 @@
         android:orientation="horizontal">
         <EditText
             android:id="@+id/start_hour"
-            android:hint="24:00"
+            android:hint="23:00"
             android:textColorHint="@color/white"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -66,7 +66,7 @@
             android:layout_marginLeft="20dp"/>
         <EditText
             android:id="@+id/end_hour"
-            android:hint="24:00"
+            android:hint="07:00"
             android:textColorHint="@color/white"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -110,14 +110,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="BeadTime"
+            android:text="Pre-sleep prep"
             android:textColor="@color/white"
             android:textSize="20dp"/>
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="BeadTime"
+            android:text="Post-sleep prep"
             android:textColor="@color/white"
             android:textSize="20dp"/>
     </LinearLayout>
@@ -128,7 +128,7 @@
         android:layout_marginTop="10dp">
         <EditText
             android:id="@+id/pree_time"
-            android:hint="24:00"
+            android:hint="15 min"
             android:textColorHint="@color/white"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -138,7 +138,7 @@
             android:layout_marginLeft="20dp"/>
         <EditText
             android:id="@+id/post_time"
-            android:hint="24:00"
+            android:hint="30 min"
             android:textColorHint="@color/white"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -154,6 +154,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="35dp"
-        android:text="Continue" />
+        android:text="Continue"
+        android:onClick="calculate"/>
 
 </LinearLayout>

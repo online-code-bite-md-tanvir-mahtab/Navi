@@ -59,10 +59,11 @@
                 android:text="Automatic"/>
             <Button
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="1dp"
                 android:layout_height="wrap_content"
-                android:text="Specific time eent"/>
+                android:text="Specific time event"
+                android:textSize="15dp"/>
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
@@ -75,10 +76,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/event_category_view"
-            android:hint="Event Name"
+            android:hint="Career"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/dead_event_view"
-            android:hint="Where "
+            android:hint="No dead line "
             android:textColor="@color/white"
             android:textColorHint="@color/white"/>
 

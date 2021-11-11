@@ -31,6 +31,7 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        setTitle("Add Event");
 
         mNameOfEvent =(EditText) findViewById(R.id.event_name);
         mNameOfLocation = (EditText) findViewById(R.id.where);
@@ -45,13 +46,20 @@ public class AddActivity extends AppCompatActivity {
                 String event_place = mNameOfLocation.getText().toString();
                 String event_category = mCategoryEvent.getText().toString();
                 String event_deadline = mDadeLine.getText().toString();
-                Event event = new Event(event_name,event_place,event_category,event_deadline);
-                mDatabase.child(Event.class.getSimpleName()).child(event_name)
-                        .setValue(event);
-                Toast.makeText(AddActivity.this,"The data has been saved",Toast.LENGTH_LONG)
-                        .show();
-                Intent intent = new Intent(AddActivity.this,ShowEventActivity.class);
-                startActivity(intent);
+
+                if (event_name == null && event_place == null){
+                    Intent intent = new Intent(AddActivity.this,ShowEventActivity.class);
+                    startActivity(intent);
+                }else{
+                    Event event = new Event(event_name,event_place);
+                    mDatabase.child(Event.class.getSimpleName()).child(event_name)
+                            .setValue(event);
+                    Toast.makeText(AddActivity.this,"The data has been saved",Toast.LENGTH_LONG)
+                            .show();
+                    Intent intent = new Intent(AddActivity.this,ShowEventActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
 

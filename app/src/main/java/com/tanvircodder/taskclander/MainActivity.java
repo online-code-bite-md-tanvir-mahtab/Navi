@@ -75,8 +75,14 @@ public class MainActivity extends AppCompatActivity {
         mDatabase.child(User.class.getSimpleName()).child(familly)
                 .setValue(user);
 //        writing the message to the database..//
+        if (first_name == null && familly==null && gender==null){
+            Intent intent = new Intent(MainActivity.this,SleepHabits.class);
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(MainActivity.this,SleepHabits.class);
+            startActivity(intent);
+        }
 
-//        Intent intent = new Intent(MainActivity.this,SleepHabits.class);
-//        startActivity(intent);
+
     }
 }

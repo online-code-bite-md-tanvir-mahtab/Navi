@@ -32,6 +32,18 @@
             android:layout_marginRight="50dp"
             android:layout_marginLeft="50dp"/>
 
+        <EditText
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:id="@+id/password_edit_re_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Re-Enter the password"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"/>
+
+
         <Button
             android:id="@+id/button_continue"
             android:layout_width="match_parent"

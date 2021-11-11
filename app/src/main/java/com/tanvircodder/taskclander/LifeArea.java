@@ -2,6 +2,7 @@ package com.tanvircodder.taskclander;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -43,7 +44,7 @@ public class LifeArea extends AppCompatActivity {
         family_hour = (EditText) findViewById(R.id.family_hour);
         fun_hour = (EditText) findViewById(R.id.fun_hour);
         fitness_hour = (EditText) findViewById(R.id.fitness_hour);
-        add =(EditText) findViewById(R.id.add_hour);
+        add_hour =(EditText) findViewById(R.id.add_hour);
 
         String mFamily = family.getText().toString();
         String mCareer = career.getText().toString();
@@ -56,15 +57,23 @@ public class LifeArea extends AppCompatActivity {
         String fun_h = fun_hour.getText().toString();
         String fitness_h = fitness_hour.getText().toString();
         String add_h = add_hour.getText().toString();
-
-//        creating the object of the model class
-        userLife = new UserLife(mCareer,mFamily,mFun,mFitness,mAdd,career_h,family_h,fun_h,fitness_h,add_h);
+        if (mCareer==null&&mFamily==null && mFun==null&&mFitness==null&&mAdd==null&&career_h==null&&family_h==null&&fun_h==null&&fitness_h==null&&add_h==null){
+            Intent intent = new Intent(LifeArea.this,AddActivity.class);
+            startActivity(intent);
+        }else{
+            //        creating the object of the model class
+            userLife = new UserLife(mCareer,mFamily,mFun,mFitness,mAdd,career_h,family_h,fun_h,fitness_h,add_h);
 //        geting the instance of the database class
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(UserLife.class.getSimpleName());
-        myRef.setValue(userLife);
+            database = FirebaseDatabase.getInstance();
+            myRef = database.getReference(UserLife.class.getSimpleName());
+            myRef.setValue(userLife);
 
-        Toast.makeText(this,"The data is been stored",Toast.LENGTH_LONG)
-                .show();
+            Toast.makeText(this,"The data is been stored",Toast.LENGTH_LONG)
+                    .show();
+            Intent intent = new Intent(LifeArea.this,AddActivity.class);
+            startActivity(intent);
+        }
+
+
     }
 }
