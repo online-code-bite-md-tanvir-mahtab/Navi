@@ -57,7 +57,11 @@ public class LifeArea extends AppCompatActivity {
         String fun_h = fun_hour.getText().toString();
         String fitness_h = fitness_hour.getText().toString();
         String add_h = add_hour.getText().toString();
-        if (mCareer !=null && mFamily!=null && mFun!=null &&mFitness!=null &&mAdd!=null &&career_h != null&&family_h!=null&&fun_h!=null&&fitness_h!=null&&add_h !=null){
+        if (mCareer.isEmpty() && mFamily.isEmpty() && mFun.isEmpty() &&mFitness.isEmpty() &&mAdd.isEmpty() &&career_h.isEmpty()&&family_h.isEmpty()&&fun_h.isEmpty()&&fitness_h.isEmpty()&&add_h.isEmpty()){
+            Toast.makeText(this,"Please fill up the box",Toast.LENGTH_LONG)
+                    .show();
+        }else{
+
             //        creating the object of the model class
             userLife = new UserLife(mCareer,mFamily,mFun,mFitness,mAdd,career_h,family_h,fun_h,fitness_h,add_h);
 //        geting the instance of the database class
@@ -69,10 +73,6 @@ public class LifeArea extends AppCompatActivity {
                     .show();
             Intent intent = new Intent(LifeArea.this,AddActivity.class);
             startActivity(intent);
-        }else{
-            Toast.makeText(this,"Please fill up the box",Toast.LENGTH_LONG)
-                    .show();
-
         }
 
 

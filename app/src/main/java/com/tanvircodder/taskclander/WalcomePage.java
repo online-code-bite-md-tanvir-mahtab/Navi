@@ -16,7 +16,7 @@ public class WalcomePage extends AppCompatActivity {
         setContentView(R.layout.activity_walcome_page);
     }
     public void conClick(View view){
-        Intent intent = new Intent(WalcomePage.this,MainActivity.class);
+        Intent intent = new Intent(WalcomePage.this,SleepHabits.class);
         startActivity(intent);
     }
 }

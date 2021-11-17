@@ -80,6 +80,17 @@ public class SleepHabits extends AppCompatActivity {
                     }
                 },mHour2,mMinute2,false);
                 timePickerDialog.show();
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                String[] firstHour = editStartHour.getText().toString().split(":");
+                String[] secondHour = editEndHour.getText().toString().split(":");
+                double f_hour = convertToFirstHour(firstHour);
+                double s_hour = convertToSecondHour(secondHour);
+                String totalHour = Integer.toString((int) ((f_hour-s_hour)/3660));
+                mHourVieww.setText(totalHour);
             }
         });
     }
@@ -91,12 +102,7 @@ public class SleepHabits extends AppCompatActivity {
         editStartHour = (EditText) findViewById(R.id.start_hour);
         editEndHour = (EditText) findViewById(R.id.end_hour);
         mHourVieww = (TextView) findViewById(R.id.calculated_hour);
-        String[] firstHour = editStartHour.getText().toString().split(":");
-        String[] secondHour = editEndHour.getText().toString().split(":");
-        double f_hour = convertToFirstHour(firstHour);
-        double s_hour = convertToSecondHour(secondHour);
-        String totalHour = Integer.toString((int) ((f_hour-s_hour)/3660));
-        mHourVieww.setText(totalHour);
+
         if (editStartHour.getText()!=null && editEndHour.getText() != null && mPreSleep.getText() != null && mPostSleep.getText() != null){
             Intent intent = new Intent(SleepHabits.this,LifeArea.class);
             startActivity(intent);
