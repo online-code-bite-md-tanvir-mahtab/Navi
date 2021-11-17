@@ -77,16 +77,12 @@ public class SleepHabits extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                String[] firstHour = editStartHour.getText().toString().split(":");
-                String[] secondHour = editEndHour.getText().toString().split(":");
-                double f_hour = convertToFirstHour(firstHour);
-                double s_hour = convertToSecondHour(secondHour);
-                String totalHour = Integer.toString((int) ((f_hour-s_hour)/3660));
-                mHourVieww.setText(totalHour);
+
             }
         });
+
     }
-    public void calculate(View view){
+    public void calculate(View view) throws InterruptedException {
 
 
         mPreSleep = (EditText) findViewById(R.id.pree_time);
@@ -96,6 +92,13 @@ public class SleepHabits extends AppCompatActivity {
         mHourVieww = (TextView) findViewById(R.id.calculated_hour);
 
         if (editStartHour.getText()!=null && editEndHour.getText() != null && mPreSleep.getText() != null && mPostSleep.getText() != null){
+            String[] firstHour = editStartHour.getText().toString().split(":");
+            String[] secondHour = editEndHour.getText().toString().split(":");
+            double f_hour = convertToFirstHour(firstHour);
+            double s_hour = convertToSecondHour(secondHour);
+            String totalHour = Integer.toString((int) ((f_hour-s_hour)/3660));
+            mHourVieww.setText(totalHour);
+            Thread.sleep(300);
             Intent intent = new Intent(SleepHabits.this,LifeArea.class);
             startActivity(intent);
         }else{
