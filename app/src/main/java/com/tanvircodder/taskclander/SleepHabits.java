@@ -1,13 +1,10 @@
 package com.tanvircodder.taskclander;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,14 +13,6 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.tanvircodder.taskclander.model.Time;
-import com.tanvircodder.taskclander.model.Time.*;
-
-import org.w3c.dom.Text;
-
-import java.time.Duration;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 public class SleepHabits extends AppCompatActivity {
