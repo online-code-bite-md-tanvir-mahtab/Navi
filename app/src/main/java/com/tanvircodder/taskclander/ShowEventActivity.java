@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -39,6 +42,7 @@ public class ShowEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_event);
         setTitle("Day View");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mDateTime = (TextView) findViewById(R.id.day_viewa_current_time);
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -83,6 +87,21 @@ public class ShowEventActivity extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(ShowEventActivity.this,AddActivity.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 
 }

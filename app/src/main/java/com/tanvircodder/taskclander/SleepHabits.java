@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,6 +33,7 @@ public class SleepHabits extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep_habits);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         editStartHour = (EditText) findViewById(R.id.start_hour);
         editEndHour = (EditText) findViewById(R.id.end_hour);
 
@@ -126,6 +129,21 @@ public class SleepHabits extends AppCompatActivity {
 
         }
         return (hour*3600)+(minute*60);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(SleepHabits.this,MainActivity.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }
 

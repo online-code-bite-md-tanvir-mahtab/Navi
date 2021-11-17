@@ -9,9 +9,14 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,12 +32,15 @@ import com.warkiz.tickseekbar.OnSeekChangeListener;
 import com.warkiz.tickseekbar.SeekParams;
 import com.warkiz.tickseekbar.TickSeekBar;
 
-public class AddActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class AddActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final String LOG_TAG  = AddActivity.class.getSimpleName();
 
     private EditText mNameOfEvent;
     private EditText mNameOfLocation;
-    private EditText mCategoryEvent;
+    private Spinner mCategoryEvent;
     private EditText mDadeLine;
     private Button mButton;
     private DatabaseReference mDatabase;
@@ -44,10 +52,28 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         setTitle("Add Event");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mNameOfEvent =(EditText) findViewById(R.id.event_name);
         mNameOfLocation = (EditText) findViewById(R.id.where);
-        mCategoryEvent = (EditText) findViewById(R.id.event_category_view);
+        mCategoryEvent = (Spinner) findViewById(R.id.spinner3);
+        mCategoryEvent.setOnItemSelectedListener(this);
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Game");
+        categories.add("Study");
+        categories.add("Meeting");
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, categories);
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        mCategoryEvent.setAdapter(dataAdapter);
+        Log.e(LOG_TAG,"The selected item is :" + String.valueOf(mCategoryEvent.getSelectedItem()));
+
+
         mDadeLine = (EditText) findViewById(R.id.dead_event_view);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mButton  = (Button) findViewById(R.id.go_view);
@@ -80,7 +106,7 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String event_name = mNameOfEvent.getText().toString();
                 String event_place = mNameOfLocation.getText().toString();
-                String event_category = mCategoryEvent.getText().toString();
+                String event_category = mCategoryEvent.getSelectedItem().toString();
                 String event_deadline = mDadeLine.getText().toString();
 
 
@@ -105,5 +131,30 @@ public class AddActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Log.e(LOG_TAG,"The selected item for country : " + parent.getItemAtPosition(position).toString());
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(AddActivity.this,LifeArea.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }

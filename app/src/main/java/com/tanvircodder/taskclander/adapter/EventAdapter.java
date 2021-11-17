@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.vipulasri.timelineview.TimelineView;
 import com.tanvircodder.taskclander.R;
 import com.tanvircodder.taskclander.model.Event;
 import com.tanvircodder.taskclander.model.User;
@@ -30,7 +31,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewModel>{
     @Override
     public ViewModel onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.event_list_item,parent,false);
-        return new ViewModel(view);
+        return new ViewModel(view,viewType);
     }
 
     @Override
@@ -52,13 +53,22 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewModel>{
             notifyDataSetChanged();
         }
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        return TimelineView.getTimeLineViewType(position,getItemCount());
+    }
+
     class ViewModel extends RecyclerView.ViewHolder{
         private TextView mEventView;
         private TextView mPlaceView;
-        public ViewModel(@NonNull View itemView) {
+        private TimelineView mTimelineview;
+        public ViewModel(@NonNull View itemView,int viewType) {
             super(itemView);
             mEventView = (TextView) itemView.findViewById(R.id.event_list_view);
             mPlaceView = (TextView) itemView.findViewById(R.id.place_list_view);
+            mTimelineview = (TimelineView) itemView.findViewById(R.id.timeline);
+            mTimelineview.initLine(viewType);
         }
     }
 }
